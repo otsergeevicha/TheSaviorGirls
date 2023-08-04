@@ -48,7 +48,6 @@ namespace Reflex.Core
             SetParent(null);
             ResolversByContract.Clear();
             _disposables.Dispose();
-            ReflexLogger.Log($"Container {Name} disposed", LogLevel.Info);
         }
 
         public Container Scope(string name, Action<ContainerDescriptor> extend = null)

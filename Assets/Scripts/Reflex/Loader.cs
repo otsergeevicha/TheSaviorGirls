@@ -7,6 +7,7 @@ namespace Reflex
     public class Loader : MonoCache
     {
         private void Start() => 
-            ReflexSceneManager.LoadScene("Greet", LoadSceneMode.Single, builder => builder.AddInstance("beautiful"));
+            ReflexSceneManager.LoadScene(Constants.MainScene, LoadSceneMode.Single, builder =>
+                builder.AddInstance(""));
     }
 }

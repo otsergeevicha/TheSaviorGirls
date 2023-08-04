@@ -14,8 +14,6 @@ namespace Reflex.Logging
             _logLevel = ResourcesUtilities.TryLoad<ReflexSettings>(nameof(ReflexSettings), out var reflexSettings)
                 ? reflexSettings.LogLevel
                 : LogLevel.Info;
-            
-            Log($"Reflex LogLevel set to {_logLevel}", LogLevel.Info);
         }
         
         public static void Log(object message, LogLevel logLevel, UnityEngine.Object context = null)

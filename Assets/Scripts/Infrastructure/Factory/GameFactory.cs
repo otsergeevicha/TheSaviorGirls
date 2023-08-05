@@ -1,8 +1,10 @@
-﻿using Infrastructure.Factory.Pools;
+﻿using Ammo;
+using Infrastructure.Factory.Pools;
 using Reflex;
 using Services.Assets;
 using Services.Factory;
 using TowerParts;
+using Vehicle;
 
 namespace Infrastructure.Factory
 {
@@ -21,5 +23,11 @@ namespace Infrastructure.Factory
 
         public MainPlatform CreateMainPlatform() => 
             _assetsProvider.InstantiateEntity(Constants.MainPlatformPath).GetComponent<MainPlatform>();
+
+        public Tank CreateTank() => 
+            _assetsProvider.InstantiateEntity(Constants.TankPath).GetComponent<Tank>();
+
+        public Bullet CreateBullet() => 
+            _assetsProvider.InstantiateEntity(Constants.BulletPath).GetComponent<Bullet>();
     }
 }

@@ -7,6 +7,7 @@ using Services.Inputs;
 using Services.SaveLoad;
 using Services.Wallet;
 using TowerParts;
+using Vehicle;
 
 namespace Reflex
 {
@@ -26,6 +27,8 @@ namespace Reflex
             pool.Construct(gameFactory);
             
             MainPlatform mainPlatform = gameFactory.CreateMainPlatform();
+            Tank tank = gameFactory.CreateTank();
+            tank.Construct(mainPlatform.GetSpawnPointTank, pool, input);
 
             TowerBuilder tower = new TowerBuilder(pool, mainPlatform.transform, Constants.TowerSize);
         }

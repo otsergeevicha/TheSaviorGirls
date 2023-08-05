@@ -5,8 +5,6 @@ namespace Services.Wallet
 {
     public interface IWallet
     {
-        void Construct(ISave saveLoadService);
-        
         event Action<int> Changed;
         
         bool Check(int pricePurchase);

@@ -4,7 +4,6 @@ using Infrastructure.SaveLoadLogic.Base;
 using Inputs;
 using Plugins.MonoCache;
 using Reflex.Core;
-using Services.Assets;
 using Services.Factory;
 using Services.Inputs;
 using Services.SaveLoad;
@@ -17,11 +16,15 @@ namespace Reflex
     {
         public void InstallBindings(ContainerDescriptor descriptor)
         {
-            descriptor.AddInstance(new SaveLoad(), typeof(ISave));
-            descriptor.AddInstance(new InputService(), typeof(IInputService));
-            descriptor.AddInstance(new AssetsProvider(), typeof(IAssetsProvider));
-            descriptor.AddInstance(new Wallet(), typeof(IWallet));
-            descriptor.AddInstance(new GameFactory(), typeof(IGameFactory));
+            SaveLoad saveLoad = new SaveLoad();
+            InputService inputService = new InputService();
+            Wallet wallet = new Wallet(saveLoad);
+            GameFactory gameFactory = new GameFactory(new AssetsProvider());
+            
+            descriptor.AddInstance(saveLoad, typeof(ISave));
+            descriptor.AddInstance(inputService, typeof(IInputService));
+            descriptor.AddInstance(wallet, typeof(IWallet));
+            descriptor.AddInstance(gameFactory, typeof(IGameFactory));
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using Plugins.MonoCache;
+﻿using BuildLogic;
+using Infrastructure.Factory.Pools;
+using Plugins.MonoCache;
 using Reflex.Core;
-using Services.Assets;
 using Services.Factory;
 using Services.Inputs;
 using Services.SaveLoad;
 using Services.Wallet;
+using TowerParts;
 
 namespace Reflex
 {
@@ -17,14 +19,15 @@ namespace Reflex
         {
             ISave save = container.Single<ISave>();
             IInputService input = container.Single<IInputService>();
-            IAssetsProvider assetsProvider = container.Single<IAssetsProvider>();
             IWallet wallet = container.Single<IWallet>();
             IGameFactory gameFactory = container.Single<IGameFactory>();
 
-            wallet.Construct(save);
-            gameFactory.Construct(assetsProvider);
+            Pool pool = gameFactory.CreatePool();
+            pool.Construct(gameFactory);
+            
+            MainPlatform mainPlatform = gameFactory.CreateMainPlatform();
 
-            print("здесь создается/инстантиируется/инжектируется игра");
+            TowerBuilder tower = new TowerBuilder(pool, mainPlatform.transform, Constants.TowerSize);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Infrastructure.SaveLoadLogic.Base;
 using Services.SaveLoad;
 using Services.Wallet;
 
@@ -7,12 +8,12 @@ namespace WalletLogic
 {
     public class Wallet : IWallet
     {
-        private ISave _saveLoadService;
+        private readonly ISave _saveLoadService;
         private int _settlementAccount;
 
-        public void Construct(ISave saveLoadService)
+        public Wallet(ISave saveLoad)
         {
-            _saveLoadService = saveLoadService;
+            _saveLoadService = saveLoad;
             _settlementAccount = _saveLoadService.AccessProgress().DataWallet.Read();
         }
 

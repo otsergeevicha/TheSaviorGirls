@@ -1,9 +1,13 @@
-﻿using Services.Assets;
+﻿using Infrastructure.Factory.Pools;
+using Reflex;
+using TowerParts;
 
 namespace Services.Factory
 {
     public interface IGameFactory
     {
-        void Construct(IAssetsProvider assetsProvider);
+        Block CreateBlock();
+        Pool CreatePool();
+        MainPlatform CreateMainPlatform();
     }
 }

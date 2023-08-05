@@ -7,20 +7,23 @@ namespace BuildLogic
     public class TowerBuilder
     {
         private readonly Transform _buildPoint;
+        private readonly int _towerSize;
+        private readonly Pool _pool;
 
         public TowerBuilder(Pool pool, Transform buildPoint, int towerSize)
         {
+            _pool = pool;
+            _towerSize = towerSize;
             _buildPoint = buildPoint;
-            LaunchBuild(pool, buildPoint, towerSize);
         }
 
-        private void LaunchBuild(Pool pool, Transform buildPoint, int towerSize)
+        public void LaunchBuild()
         {
-            Transform currentPoint = buildPoint;
+            Transform currentPoint = _buildPoint;
 
-            for (int i = 0; i < towerSize; i++)
+            for (int i = 0; i < _towerSize; i++)
             {
-                Block block = pool.TryGetBlock();
+                Block block = _pool.TryGetBlock();
 
                 block.transform.position = GetNewPosition(currentPoint, block);
                 block.OnActive();

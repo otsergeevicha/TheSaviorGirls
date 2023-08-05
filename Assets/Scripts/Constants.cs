@@ -7,7 +7,7 @@
     public const string Progress = "Progress";
     
     //tower
-    public const int TowerSize = 56;
+    public const int TowerSize = 6;
     public const int CountSpawnBlocks = TowerSize;
     
     //path
@@ -21,5 +21,8 @@
     public const int DelayShots = 100;
     
     //pool
-    public const int CountSpawnBullets = 50;
+    public const int CountSpawnBullets = 20;
+    
+    //bullet
+    public const float BulletSpeed = 20f;
 }

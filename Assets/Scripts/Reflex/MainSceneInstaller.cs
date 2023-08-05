@@ -27,10 +27,10 @@ namespace Reflex
             pool.Construct(gameFactory);
             
             MainPlatform mainPlatform = gameFactory.CreateMainPlatform();
+            mainPlatform.Construct(new TowerBuilder(pool, mainPlatform.transform, Constants.TowerSize), pool);
+            
             Tank tank = gameFactory.CreateTank();
             tank.Construct(mainPlatform.GetSpawnPointTank, pool, input);
-
-            TowerBuilder tower = new TowerBuilder(pool, mainPlatform.transform, Constants.TowerSize);
         }
     }
 }

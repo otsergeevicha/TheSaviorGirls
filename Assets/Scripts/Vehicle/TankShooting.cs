@@ -29,7 +29,7 @@ namespace Vehicle
         {
             while (_isAttack)
             {
-                _pool.TryGetBullet().Shot(_shootPoint);
+                _pool.TryGetBullet().OnActive(_shootPoint);
                 await UniTask.Delay(Constants.DelayShots);
             }
         }

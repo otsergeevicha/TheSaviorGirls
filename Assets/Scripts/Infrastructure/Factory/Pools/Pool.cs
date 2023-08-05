@@ -26,5 +26,8 @@ namespace Infrastructure.Factory.Pools
         public Bullet TryGetBullet() =>
             _bulletPool.Get().FirstOrDefault(bullet =>
                 bullet.isActiveAndEnabled == false);
+
+        public Block[] GetAllBlocks() => 
+            _blockPool.Get();
     }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5615624673410665225}
-  - component: {fileID: 7205513031892353401}
+  - component: {fileID: 733748950611686343}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 831531297410365851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7205513031892353401
+--- !u!114 &733748950611686343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +58,8 @@ GameObject:
   - component: {fileID: 2020806161327149647}
   - component: {fileID: 5813551583940570996}
   - component: {fileID: 7205696527079150532}
-  - component: {fileID: 6955163783492955282}
+  - component: {fileID: 1566293251967047931}
+  - component: {fileID: 8484533899447491047}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -4398,7 +4399,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6565338976729884030}
   m_Mesh: {fileID: 0}
---- !u!64 &6955163783492955282
+--- !u!64 &1566293251967047931
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4413,10 +4414,22 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8484533899447491047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565338976729884030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3144002759f94dffb3d671f02a55cffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

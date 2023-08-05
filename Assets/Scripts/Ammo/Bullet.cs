@@ -1,4 +1,5 @@
 using Plugins.MonoCache;
+using TowerParts;
 using UnityEngine;
 
 namespace Ammo
@@ -7,16 +8,28 @@ namespace Ammo
     [RequireComponent(typeof(SphereCollider))]
     public class Bullet : MonoCache
     {
-        public void OnActive() => 
+        private Rigidbody _rigidbody;
+
+        private void Awake() => 
+            _rigidbody = Get<Rigidbody>();
+
+        public void OnActive(Transform shootPoint)
+        {
+            transform.position = shootPoint.position;
+            transform.LookAt(Vector3.forward);
             gameObject.SetActive(true);
-        
+            _rigidbody.velocity = transform.forward * Constants.BulletSpeed;
+        }
+
         public void InActive() => 
             gameObject.SetActive(false);
 
-        public void Shot(Transform shootPoint)
+        private void OnTriggerEnter(Collider hit)
         {
-            OnActive();
-            transform.position = shootPoint.position;
+            if (hit.TryGetComponent(out BlockCollisionHandler block)) 
+                block.Break();
+
+            InActive();
         }
     }
 }

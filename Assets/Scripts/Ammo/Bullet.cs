@@ -26,7 +26,7 @@ namespace Ammo
 
         private void OnTriggerEnter(Collider hit)
         {
-            if (hit.TryGetComponent(out BlockCollisionHandler block)) 
+            if (hit.TryGetComponent(out Block block)) 
                 block.Break();
 
             InActive();

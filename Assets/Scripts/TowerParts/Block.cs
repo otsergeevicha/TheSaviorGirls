@@ -13,7 +13,7 @@ namespace TowerParts
         public void InActive() => 
             gameObject.SetActive(false);
 
-        public void Notify() => 
+        public void Break() => 
             Broken?.Invoke(this);
     }
 }

@@ -4,6 +4,7 @@ using Reflex;
 using Services.Assets;
 using Services.Factory;
 using TowerParts;
+using TowerParts.Obstacles;
 using Vehicle;
 
 namespace Infrastructure.Factory
@@ -29,5 +30,8 @@ namespace Infrastructure.Factory
 
         public Bullet CreateBullet() => 
             _assetsProvider.InstantiateEntity(Constants.BulletPath).GetComponent<Bullet>();
+
+        public ObstaclePattern CreateObstaclePattern() => 
+            _assetsProvider.InstantiateEntity(Constants.ObstacleHolderPath).GetComponent<ObstaclePattern>();
     }
 }

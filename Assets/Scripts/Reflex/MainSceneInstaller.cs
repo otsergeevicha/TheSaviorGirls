@@ -1,4 +1,5 @@
-﻿using BuildLogic;
+﻿using System;
+using BuildLogic;
 using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Reflex.Core;
@@ -7,6 +8,7 @@ using Services.Inputs;
 using Services.SaveLoad;
 using Services.Wallet;
 using TowerParts;
+using TowerParts.Obstacles;
 using Vehicle;
 
 namespace Reflex
@@ -28,6 +30,8 @@ namespace Reflex
             
             MainPlatform mainPlatform = gameFactory.CreateMainPlatform();
             mainPlatform.Construct(new TowerBuilder(pool, mainPlatform.transform, Constants.TowerSize), pool);
+
+            ObstaclePattern obstaclePattern = gameFactory.CreateObstaclePattern();
             
             Tank tank = gameFactory.CreateTank();
             tank.Construct(mainPlatform.GetSpawnPointTank, pool, input);

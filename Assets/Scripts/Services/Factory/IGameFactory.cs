@@ -2,6 +2,7 @@
 using Infrastructure.Factory.Pools;
 using Reflex;
 using TowerParts;
+using TowerParts.Obstacles;
 using Vehicle;
 
 namespace Services.Factory
@@ -13,5 +14,6 @@ namespace Services.Factory
         MainPlatform CreateMainPlatform();
         Tank CreateTank();
         Bullet CreateBullet();
+        ObstaclePattern CreateObstaclePattern();
     }
 }

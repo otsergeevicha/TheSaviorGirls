@@ -16,6 +16,7 @@
     public const string MainPlatformPath = "Tower/MainPlatform";
     public const string TankPath = "Vehicle/Tank";
     public const string BulletPath = "Ammo/Bullet";
+    public const string ObstacleHolderPath = "Obstacles/ObstacleHolder";
     
     //tank
     public const int DelayShots = 100;
@@ -25,4 +26,10 @@
     
     //bullet
     public const float BulletSpeed = 20f;
+    public const int ExplosionForce = 100;
+    public const int ExplosionRadius = 100;
+    public const float CameraPositionY = 11f;
+    
+    //rotateObstacle
+    public const float AnimationDuration = 3f;
 }

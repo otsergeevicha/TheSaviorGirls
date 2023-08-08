@@ -17,17 +17,21 @@ namespace BuildLogic
             _buildPoint = buildPoint;
         }
 
-        public void LaunchBuild()
+        public void LaunchBuild(Color[] colors)
         {
             Transform currentPoint = _buildPoint;
 
-            for (int i = 0; i < _towerSize; i++)
+            if (colors.Length != 0)
             {
-                Block block = _pool.TryGetBlock();
+                for (int i = 0; i < _towerSize; i++)
+                {
+                    Block block = _pool.TryGetBlock();
 
-                block.transform.position = GetNewPosition(currentPoint, block);
-                block.OnActive();
-                currentPoint = block.transform;
+                    block.transform.position = GetNewPosition(currentPoint, block);
+                    block.OnActive();
+                    block.SetColor(colors[Random.Range(0, colors.Length)]);
+                    currentPoint = block.transform;
+                }
             }
         }
 

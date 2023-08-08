@@ -10,6 +10,7 @@ namespace TowerParts
     public class MainPlatform : MonoCache
     {
         [SerializeField] private Transform _spawnPointTank;
+        [SerializeField] private Color[] _colors;
 
         public event Action<int> SizeUpdated; 
 
@@ -22,7 +23,7 @@ namespace TowerParts
         public void Construct(TowerBuilder towerBuilder, Pool pool)
         {
             _towerBuilder = towerBuilder;
-            _towerBuilder.LaunchBuild();
+            _towerBuilder.LaunchBuild(_colors);
 
             _blocks = pool.GetAllBlocks();
 

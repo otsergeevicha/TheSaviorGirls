@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6265876220812190666}
   - component: {fileID: 9005978452346878885}
   - component: {fileID: 7655550272490951646}
+  - component: {fileID: 6478694490940236010}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -143,6 +144,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 9061541448023794285}
+--- !u!114 &6478694490940236010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802549339377539508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31ec33ae3884151b9a5cefa98eddf38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 0.1
+  _radialSegments: 1
 --- !u!1 &7178127619002613173
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +169,7 @@ GameObject:
   - component: {fileID: 3217705787559340843}
   - component: {fileID: 4647584932624145445}
   - component: {fileID: 8687690080286002516}
+  - component: {fileID: 6936582380004374688}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -226,3 +242,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6936582380004374688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178127619002613173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31ec33ae3884151b9a5cefa98eddf38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 0.1
+  _radialSegments: 1

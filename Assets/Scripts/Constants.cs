@@ -17,6 +17,7 @@
     public const string TankPath = "Vehicle/Tank";
     public const string BulletPath = "Ammo/Bullet";
     public const string ObstacleHolderPath = "Obstacles/ObstacleHolder";
+    public const string WindowRootPath = "Canvases/WindowRoot";
     
     //tank
     public const int DelayShots = 100;

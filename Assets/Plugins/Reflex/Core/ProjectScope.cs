@@ -11,6 +11,8 @@ namespace Reflex.Core
             {
                 nestedInstaller.InstallBindings(descriptor);
             }
+
+            ReflexLogger.Log($"{nameof(ProjectScope)} Bindings Installed", LogLevel.Info, gameObject);
         }
     }
 }

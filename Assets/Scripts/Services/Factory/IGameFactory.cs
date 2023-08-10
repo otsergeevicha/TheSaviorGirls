@@ -1,4 +1,5 @@
 ﻿using Ammo;
+using CanvasesLogic;
 using Infrastructure.Factory.Pools;
 using Reflex;
 using TowerParts;
@@ -15,5 +16,6 @@ namespace Services.Factory
         Tank CreateTank();
         Bullet CreateBullet();
         ObstaclePattern CreateObstaclePattern();
+        WindowRoot CreateWindowRoot();
     }
 }

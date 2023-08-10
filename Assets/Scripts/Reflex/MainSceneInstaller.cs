@@ -1,4 +1,5 @@
 ﻿using BuildLogic;
+using CanvasesLogic;
 using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Reflex.Core;
@@ -14,38 +15,30 @@ namespace Reflex
 {
     public class MainSceneInstaller : MonoCache, IInstaller
     {
-        private ISave _save;
-        private IInputService _input;
-        private IWallet _wallet;
-        private IGameFactory _gameFactory;
-        
-        private Pool _pool;
-        private MainPlatform _mainPlatform;
-        private TowerBuilder _towerBuilder;
-        private Tank _tank;
-        private ObstaclePattern _obstaclePattern;
-
         public void InstallBindings(ContainerDescriptor descriptor) => 
             descriptor.OnContainerBuilt += LoadLevel;
 
         private void LoadLevel(Container container)
         {
-             _save = container.Single<ISave>();
-            _input = container.Single<IInputService>();
-            _wallet = container.Single<IWallet>();
-            _gameFactory = container.Single<IGameFactory>();
+             ISave save = container.Single<ISave>();
+             IInputService input = container.Single<IInputService>();
+             IWallet wallet = container.Single<IWallet>();
+             IGameFactory gameFactory = container.Single<IGameFactory>();
         
-            _pool = _gameFactory.CreatePool();
-            _pool.Construct(_gameFactory);
+            Pool pool = gameFactory.CreatePool();
+            pool.Construct(gameFactory);
             
-            _mainPlatform = _gameFactory.CreateMainPlatform();
-            _towerBuilder = new TowerBuilder(_pool, _mainPlatform.transform, Constants.TowerSize);
-            _mainPlatform.Construct(_towerBuilder, _pool);
+            MainPlatform mainPlatform = gameFactory.CreateMainPlatform();
+            TowerBuilder towerBuilder = new TowerBuilder(pool, mainPlatform.transform, Constants.TowerSize);
+            mainPlatform.Construct(towerBuilder, pool);
         
-            _obstaclePattern = _gameFactory.CreateObstaclePattern();
+            ObstaclePattern obstaclePattern = gameFactory.CreateObstaclePattern();
             
-            _tank = _gameFactory.CreateTank();
-            _tank.Construct(_mainPlatform.GetSpawnPointTank, _pool, _input);
+            Tank tank = gameFactory.CreateTank();
+            tank.Construct(mainPlatform.GetSpawnPointTank, pool, input);
+
+            WindowRoot windowRoot = gameFactory.CreateWindowRoot();
+            
         }
     }
 }

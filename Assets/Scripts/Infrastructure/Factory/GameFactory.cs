@@ -1,4 +1,5 @@
 ﻿using Ammo;
+using CanvasesLogic;
 using Infrastructure.Factory.Pools;
 using Reflex;
 using Services.Assets;
@@ -13,25 +14,28 @@ namespace Infrastructure.Factory
     {
         private readonly IAssetsProvider _assetsProvider;
 
-        public GameFactory(IAssetsProvider assetsProvider) => 
+        public GameFactory(IAssetsProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
 
-        public Block CreateBlock() => 
+        public Block CreateBlock() =>
             _assetsProvider.InstantiateEntity(Constants.BlockPath).GetComponent<Block>();
 
-        public Pool CreatePool() => 
+        public Pool CreatePool() =>
             _assetsProvider.InstantiateEntity(Constants.PoolPath).GetComponent<Pool>();
 
-        public MainPlatform CreateMainPlatform() => 
+        public MainPlatform CreateMainPlatform() =>
             _assetsProvider.InstantiateEntity(Constants.MainPlatformPath).GetComponent<MainPlatform>();
 
-        public Tank CreateTank() => 
+        public Tank CreateTank() =>
             _assetsProvider.InstantiateEntity(Constants.TankPath).GetComponent<Tank>();
 
-        public Bullet CreateBullet() => 
+        public Bullet CreateBullet() =>
             _assetsProvider.InstantiateEntity(Constants.BulletPath).GetComponent<Bullet>();
 
-        public ObstaclePattern CreateObstaclePattern() => 
+        public ObstaclePattern CreateObstaclePattern() =>
             _assetsProvider.InstantiateEntity(Constants.ObstacleHolderPath).GetComponent<ObstaclePattern>();
+
+        public WindowRoot CreateWindowRoot() =>
+            _assetsProvider.InstantiateEntity(Constants.WindowRootPath).GetComponent<WindowRoot>();
     }
 }

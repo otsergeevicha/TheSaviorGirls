@@ -29,8 +29,9 @@ namespace CanvasesLogic
 
             tank.OnVictoried += OnPlayerWin;
             tank.OnGameOvered += OnPlayerGameOver;
-            
-            Time.timeScale = 0;
+            tank.InActive();
+
+            _menuScreen.Inject(tank);
             
             DefaultConfigWindows();
         }
@@ -39,6 +40,7 @@ namespace CanvasesLogic
         {
             _menuScreen.OnActive();
 
+            _victoryScreen.InActive();
             _gameOverScreen.InActive();
             _authorizationScreen.InActive();
             _leaderboardScreen.InActive();

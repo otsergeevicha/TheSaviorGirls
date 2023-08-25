@@ -14,20 +14,27 @@ namespace Vehicle
 
         private readonly CancellationTokenSource _shootToken = new();
 
+        private IInputService _input;
         private Pool _pool;
         private bool _isAttack;
         private float _currentPositionZ;
 
         public void Construct(Pool pool, IInputService input)
         {
+            _input = input;
             _pool = pool;
-
-            input.OnActiveControls();
+            
             input.OnShoot(OnCast);
             input.OffShoot(OffCast);
 
             _currentPositionZ = transform.position.z;
         }
+
+        public void OnActive() => 
+            _input.OnActiveControls();
+        
+        public void InActive() => 
+            _input.InActiveControls();
 
         private void OnCast() => 
             ImitationQueue().Forget();

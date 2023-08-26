@@ -18,6 +18,7 @@ namespace Vehicle
         private Pool _pool;
         private bool _isAttack;
         private float _currentPositionZ;
+        public int CountShots { get; private set; } = 0;
 
         public void Construct(Pool pool, IInputService input)
         {
@@ -35,6 +36,9 @@ namespace Vehicle
         
         public void InActive() => 
             _input.InActiveControls();
+
+        public void ResetCountShots() =>
+            CountShots = 0;
 
         private void OnCast() => 
             ImitationQueue().Forget();
@@ -54,11 +58,14 @@ namespace Vehicle
             
             while (_isAttack)
             {
+                CountShots++;
+                
                 _pool.TryGetBullet().OnActive(_shootPoint);
                 transform.DOMoveZ(transform.position.z - .2f, .15f).SetLoops(2, LoopType.Yoyo)
                     .OnComplete(ReturnStartPosition);
                 await UniTask.Delay(Constants.DelayShots);
             }
         }
+
     }
 }

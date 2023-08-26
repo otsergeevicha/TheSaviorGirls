@@ -8,6 +8,7 @@ using Services.Factory;
 using Services.Inputs;
 using Services.SaveLoad;
 using Services.Wallet;
+using SoundFX;
 using TowerParts;
 using TowerParts.Obstacles;
 using Vehicle;
@@ -41,7 +42,7 @@ namespace Reflex
             SoundOperator soundOperator = gameFactory.CreateSoundOperator();
             
             WindowRoot windowRoot = gameFactory.CreateWindowRoot();
-            windowRoot.Construct(save, tank, soundOperator);
+            windowRoot.Construct(save, tank, soundOperator, obstaclePattern, towerBuilder);
         }
     }
 }

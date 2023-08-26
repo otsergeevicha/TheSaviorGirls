@@ -24,7 +24,8 @@ namespace TowerParts
         public void Construct(TowerBuilder towerBuilder, Pool pool)
         {
             _towerBuilder = towerBuilder;
-            _towerBuilder.LaunchBuild(_colors);
+            _towerBuilder.SetColors(_colors);
+            //_towerBuilder.LaunchBuild(_colors);
 
             _blocks = pool.GetAllBlocks();
 
@@ -34,10 +35,14 @@ namespace TowerParts
             SizeUpdated?.Invoke(GetActualSize());
         }
 
+        protected override void OnDisabled()
+        {
+            for (int i = 0; i < _blocks.Length; i++) 
+                _blocks[i].Broken -= OnBroken;
+        }
+
         private void OnBroken(Block block)
         {
-            block.Broken -= OnBroken;
-            
             block.InActive();
             TowerDisplacement(block);
         }

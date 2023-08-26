@@ -41,7 +41,7 @@ namespace CanvasesLogic.LeaderboardModule
         
         public void GetLeaderboardEntries()
         {
-            Agava.YandexGames.Leaderboard.GetEntries(Constants.Leaderboard, (result) =>
+            Leaderboard.GetEntries(Constants.Leaderboard, (result) =>
             {
                 for (int i = 0; i < result.entries.Length; i++)
                     _members[i].UpdateData(result.entries[i].rank.ToString(), NameCorrector(result.entries[i].player.publicName),

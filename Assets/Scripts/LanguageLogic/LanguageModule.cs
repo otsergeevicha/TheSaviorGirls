@@ -1,17 +1,19 @@
 ﻿using Plugins.MonoCache;
 
-public class LanguageModule : MonoCache
+namespace LanguageLogic
 {
-    private const string RussianLanguage = "Russian";
-    private const string EnglishLanguage = "English";
-
-    private string _currentLanguage;
-
-    private void Start() =>
-        SetLanguage();
-
-    private void SetLanguage()
+    public class LanguageModule : MonoCache
     {
+        private const string RussianLanguage = "Russian";
+        private const string EnglishLanguage = "English";
+
+        private string _currentLanguage;
+
+        private void Start() =>
+            SetLanguage();
+
+        private void SetLanguage()
+        {
 #if !UNITY_WEBGL || !UNITY_EDITOR
             switch (YandexGamesSdk.Environment.i18n.lang)
             {
@@ -26,5 +28,6 @@ public class LanguageModule : MonoCache
                     break;
             }
 #endif
+        }
     }
 }

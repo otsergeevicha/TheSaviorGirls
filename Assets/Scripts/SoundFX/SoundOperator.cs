@@ -1,9 +1,9 @@
-﻿using Agava.WebUtility;
-using Agava.YandexGames;
+﻿using Agava.YandexGames;
+using CanvasesLogic;
 using Plugins.MonoCache;
 using UnityEngine;
 
-namespace CanvasesLogic.Menu
+namespace SoundFX
 {
     public class SoundOperator : MonoCache
     {
@@ -33,17 +33,17 @@ namespace CanvasesLogic.Menu
 
         public void Mute()
         {
-            _playSound.volume = 0;
-            _gameOverSound.volume = 0;
-            
+            // _playSound.volume = 0;
+            // _gameOverSound.volume = 0;
+            //
             IsSoundStatus = false;
         }
 
         public void UnMute()
         {
-            _playSound.volume = 1;
-            _gameOverSound.volume = 1;
-            
+            // _playSound.volume = 1;
+            // _gameOverSound.volume = 1;
+            //
             IsSoundStatus = true;
         }
 

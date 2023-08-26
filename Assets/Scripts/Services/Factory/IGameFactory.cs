@@ -3,6 +3,7 @@ using CanvasesLogic;
 using CanvasesLogic.Menu;
 using Infrastructure.Factory.Pools;
 using Reflex;
+using SoundFX;
 using TowerParts;
 using TowerParts.Obstacles;
 using Vehicle;

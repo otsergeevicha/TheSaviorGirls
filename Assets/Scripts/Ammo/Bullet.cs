@@ -34,8 +34,11 @@ namespace Ammo
                 InActive();
             }
 
-            if (hit.TryGetComponent(out Obstacle _))
+            if (hit.TryGetComponent(out Obstacle obstacle))
+            {
+                obstacle.Notify();
                 Bounce();
+            }
         }
 
         private void Bounce()

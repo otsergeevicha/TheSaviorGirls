@@ -15,10 +15,9 @@ namespace TowerParts
 
         public event Action<Block> Broken;
 
-        private void Awake()
+        public void ResetParticle()
         {
             _meshRenderer = Get<MeshRenderer>();
-
             _effect = Instantiate(_destroyEffect, transform.position, _destroyEffect.transform.rotation);
             _renderer = _effect.GetComponent<ParticleSystemRenderer>();
         }
@@ -32,7 +31,7 @@ namespace TowerParts
         public void OnActive() =>
             gameObject.SetActive(true);
 
-        public void InActive() =>
+        public void InActive() => 
             gameObject.SetActive(false);
 
         public void Break()

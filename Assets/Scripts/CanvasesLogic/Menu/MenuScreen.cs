@@ -1,5 +1,8 @@
-﻿using CanvasesLogic.LeaderboardModule;
+﻿using BuildLogic;
+using CanvasesLogic.LeaderboardModule;
 using Plugins.MonoCache;
+using SoundFX;
+using TowerParts.Obstacles;
 using UnityEngine;
 using UnityEngine.UI;
 using Vehicle;
@@ -12,13 +15,19 @@ namespace CanvasesLogic.Menu
         [SerializeField] private Image _inActiveSoundIcon;
         [SerializeField] private Toggle _toggleSound;
         
-        private LeaderboardScreen _leaderboardScreen;
         private SoundOperator _soundOperator;
 
         private Tank _tank;
-        
-        public void Inject(Tank tank, SoundOperator soundOperator)
+        private LeaderboardScreen _leaderboardScreen;
+        private ObstaclePattern _obstaclePattern;
+        private TowerBuilder _towerBuilder;
+
+        public void Inject(Tank tank, SoundOperator soundOperator, LeaderboardScreen leaderboardScreen,
+            ObstaclePattern obstaclePattern, TowerBuilder towerBuilder)
         {
+            _towerBuilder = towerBuilder;
+            _obstaclePattern = obstaclePattern;
+            _leaderboardScreen = leaderboardScreen;
             _soundOperator = soundOperator;
             _tank = tank;
         }
@@ -26,7 +35,11 @@ namespace CanvasesLogic.Menu
         public void SelectPlay()
         {
             InActive();
+            _tank.ResetCountShots();
+            _obstaclePattern.ResetCountCollision();
             _tank.OnActive();
+            _towerBuilder.LaunchBuild();
+            
             Time.timeScale = 1;
         }
 

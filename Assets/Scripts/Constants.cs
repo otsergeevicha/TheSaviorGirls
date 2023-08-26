@@ -7,7 +7,7 @@
     public const string Progress = "Progress";
     
     //tower
-    public const int TowerSize = 6;
+    public const int TowerSize = 1;
     public const int CountSpawnBlocks = TowerSize;
     
     //path

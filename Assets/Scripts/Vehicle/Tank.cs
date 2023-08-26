@@ -23,16 +23,22 @@ namespace Vehicle
             _tankShooting.Construct(pool, input);
         }
 
+        public void OnActive() =>
+            _tankShooting.OnActive();
+
+        public void InActive() =>
+            _tankShooting.InActive();
+
+        public void ResetCountShots() => 
+            _tankShooting.ResetCountShots();
+
+        public int GetCountSpentBullets() => 
+            _tankShooting.CountShots;
+
         private void TowerDestroyed()
         {
             InActive();
             Victoriad?.Invoke();
         }
-
-        public void OnActive() =>
-            _tankShooting.OnActive();
-        
-        public void InActive() =>
-            _tankShooting.InActive();
     }
 }

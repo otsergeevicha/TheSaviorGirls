@@ -8,8 +8,6 @@ namespace CanvasesLogic.Menu
 {
     public class MenuScreen : MonoCache, IWindow
     {
-        [SerializeField] private Canvas _canvas;
-
         [SerializeField] private Image _activeSoundIcon;
         [SerializeField] private Image _inActiveSoundIcon;
         [SerializeField] private Toggle _toggleSound;
@@ -18,9 +16,12 @@ namespace CanvasesLogic.Menu
         private SoundOperator _soundOperator;
 
         private Tank _tank;
-
-        public void Inject(Tank tank) => 
+        
+        public void Inject(Tank tank, SoundOperator soundOperator)
+        {
+            _soundOperator = soundOperator;
             _tank = tank;
+        }
 
         public void SelectPlay()
         {
@@ -33,7 +34,7 @@ namespace CanvasesLogic.Menu
         {
             if (_toggleSound.isOn) 
                 _soundOperator.UnMute();
-
+            
             if (!_toggleSound.isOn) 
                 _soundOperator.Mute();
             
@@ -47,23 +48,13 @@ namespace CanvasesLogic.Menu
         }
 
         public void OnActive()
-        {
+        {        
             Time.timeScale = 0;
             gameObject.SetActive(true);
         }
 
-        public void InActive() => 
+        public void InActive() =>
             gameObject.SetActive(false);
-
-        // public void OnActive() =>
-
-        //     _canvas.enabled = true;
-
-        //
-
-        // public void InActive() => 
-
-        //     _canvas.enabled = false;
 
 
         private void ChangeIconSound(bool flag)

@@ -18,6 +18,7 @@
     public const string BulletPath = "Ammo/Bullet";
     public const string ObstacleHolderPath = "Obstacles/ObstacleHolder";
     public const string WindowRootPath = "Canvases/WindowRoot";
+    public const string SoundOperatorPath = "SoundFX/SoundOperator";
     
     //tank
     public const int DelayShots = 100;

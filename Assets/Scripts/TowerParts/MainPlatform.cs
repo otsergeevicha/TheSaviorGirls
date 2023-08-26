@@ -13,6 +13,7 @@ namespace TowerParts
         [SerializeField] private Color[] _colors;
 
         public event Action<int> SizeUpdated; 
+        public event Action Ended; 
 
         private TowerBuilder _towerBuilder;
         private Block[] _blocks;
@@ -46,8 +47,13 @@ namespace TowerParts
             for (int i = 0; i < _blocks.Length; i++)
                 _blocks[i].transform.position = new Vector3(_blocks[i].transform.position.x,
                     _blocks[i].transform.position.y - block.transform.localScale.y, _blocks[i].transform.position.z);
+
+            int currentSizeTower = GetActualSize();
+
+            if (currentSizeTower == 0) 
+                Ended?.Invoke();
             
-            SizeUpdated?.Invoke(GetActualSize());
+            SizeUpdated?.Invoke(currentSizeTower);
         }
 
         private int GetActualSize() => 

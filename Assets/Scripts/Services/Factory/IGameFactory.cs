@@ -1,5 +1,6 @@
 ﻿using Ammo;
 using CanvasesLogic;
+using CanvasesLogic.Menu;
 using Infrastructure.Factory.Pools;
 using Reflex;
 using TowerParts;
@@ -17,5 +18,6 @@ namespace Services.Factory
         Bullet CreateBullet();
         ObstaclePattern CreateObstaclePattern();
         WindowRoot CreateWindowRoot();
+        SoundOperator CreateSoundOperator();
     }
 }

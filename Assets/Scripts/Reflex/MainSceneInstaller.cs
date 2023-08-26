@@ -1,5 +1,6 @@
 ﻿using BuildLogic;
 using CanvasesLogic;
+using CanvasesLogic.Menu;
 using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Reflex.Core;
@@ -35,10 +36,12 @@ namespace Reflex
             ObstaclePattern obstaclePattern = gameFactory.CreateObstaclePattern();
 
             Tank tank = gameFactory.CreateTank();
-            tank.Construct(mainPlatform.GetSpawnPointTank, pool, input);
+            tank.Construct(mainPlatform, pool, input);
 
+            SoundOperator soundOperator = gameFactory.CreateSoundOperator();
+            
             WindowRoot windowRoot = gameFactory.CreateWindowRoot();
-            windowRoot.Construct(save, tank);
+            windowRoot.Construct(save, tank, soundOperator);
         }
     }
 }

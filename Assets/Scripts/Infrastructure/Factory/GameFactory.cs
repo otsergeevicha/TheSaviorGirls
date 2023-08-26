@@ -1,5 +1,6 @@
 ﻿using Ammo;
 using CanvasesLogic;
+using CanvasesLogic.Menu;
 using Infrastructure.Factory.Pools;
 using Reflex;
 using Services.Assets;
@@ -35,6 +36,9 @@ namespace Infrastructure.Factory
         public ObstaclePattern CreateObstaclePattern() =>
             _assetsProvider.InstantiateEntity(Constants.ObstacleHolderPath).GetComponent<ObstaclePattern>();
 
+        public SoundOperator CreateSoundOperator() =>
+            _assetsProvider.InstantiateEntity(Constants.SoundOperatorPath).GetComponent<SoundOperator>();
+        
         public WindowRoot CreateWindowRoot() =>
             _assetsProvider.InstantiateEntity(Constants.WindowRootPath).GetComponent<WindowRoot>();
     }

@@ -1,4 +1,5 @@
-﻿using Plugins.MonoCache;
+﻿using Agava.WebUtility;
+using Plugins.MonoCache;
 using UnityEngine;
 
 namespace CanvasesLogic.Menu
@@ -12,11 +13,19 @@ namespace CanvasesLogic.Menu
 
         public bool IsSoundStatus { get; private set; } = true;
 
-        // protected override void OnEnabled() => 
-        //      WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
-        //
-        // protected override void OnDisabled() => 
-        //      WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
+        protected override void OnEnabled()
+        {
+#if !UNITY_WEBGL || !UNITY_EDITOR
+            WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
+#endif
+        }
+
+        protected override void OnDisabled()
+        {
+#if !UNITY_WEBGL || !UNITY_EDITOR
+            WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
+#endif
+        }
 
         public void Inject(WindowRoot windowRoot) => 
             _windowRoot = windowRoot;

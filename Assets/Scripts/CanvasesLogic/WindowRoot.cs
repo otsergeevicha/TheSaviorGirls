@@ -19,7 +19,7 @@ namespace CanvasesLogic
         private AuthorizationScreen _authorizationScreen;
         private LeaderboardScreen _leaderboardScreen;
 
-        public void Construct(ISave save, Tank tank)
+        public void Construct(ISave save, Tank tank, SoundOperator soundOperator)
         {
             _victoryScreen = ChildrenGet<VictoryScreen>();
             _menuScreen = ChildrenGet<MenuScreen>();
@@ -27,11 +27,10 @@ namespace CanvasesLogic
             _authorizationScreen = ChildrenGet<AuthorizationScreen>();
             _gameOverScreen = ChildrenGet<GameOverScreen>();
 
-            tank.OnVictoried += OnPlayerWin;
-            tank.OnGameOvered += OnPlayerGameOver;
+            tank.Victoriad += PlayerWin;
             tank.InActive();
 
-            _menuScreen.Inject(tank);
+            _menuScreen.Inject(tank, soundOperator);
             
             DefaultConfigWindows();
         }
@@ -46,10 +45,7 @@ namespace CanvasesLogic
             _leaderboardScreen.InActive();
         }
 
-        private void OnPlayerWin() =>
+        private void PlayerWin() =>
             _victoryScreen.OnActive();
-
-        private void OnPlayerGameOver() =>
-            _gameOverScreen.OnActive();
     }
 }

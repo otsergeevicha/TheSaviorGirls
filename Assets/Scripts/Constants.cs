@@ -34,4 +34,10 @@
     
     //rotateObstacle
     public const float AnimationDuration = 3f;
+    
+    //Leaderboard
+    public const string Leaderboard = "Leaderboard";
+    public const string Anonymous = "Anonymous";
+    public const int TopPlayersCount = 7;
+    public const int CompletingPlayersCount = 1;
 }

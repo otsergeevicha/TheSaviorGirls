@@ -31,6 +31,7 @@ namespace CanvasesLogic
             tank.InActive();
 
             _menuScreen.Inject(tank, soundOperator);
+            _authorizationScreen.Inject(_menuScreen, _leaderboardScreen);
             
             DefaultConfigWindows();
         }

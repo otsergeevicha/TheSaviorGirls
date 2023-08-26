@@ -1,4 +1,5 @@
 ﻿using Agava.WebUtility;
+using Agava.YandexGames;
 using Plugins.MonoCache;
 using UnityEngine;
 
@@ -86,7 +87,7 @@ namespace CanvasesLogic.Menu
             if (!inBackground)
             {
                 OnOpenCallback();
-                //InterstitialAd.Show(OnOpenCallback, OnCloseCallback, OnErrorCallback);
+                InterstitialAd.Show(OnOpenCallback, OnCloseCallback, OnErrorCallback);
             }
         }
 

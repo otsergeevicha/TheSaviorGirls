@@ -66,6 +66,5 @@ namespace Vehicle
                 await UniTask.Delay(Constants.DelayShots);
             }
         }
-
     }
 }
